@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MK | Rental Person</title>
+    <title>MK | Free Rental Person</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -18,16 +18,17 @@
         * { box-sizing: border-box; transition: all 0.3s ease; scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text-main); margin: 0; padding: 0; overflow-x: hidden; }
 
-        /* Navigation */
         nav {
             position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 1100px;
             background: var(--glass); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 100px; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; z-index: 1000;
         }
-        .logo { font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; font-weight: 700; letter-spacing: 4px; }
+        .logo { font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; font-weight: 700; letter-spacing: 4px; color: #fff; text-decoration: none; }
 
-        header { height: 75vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(3.5rem, 12vw, 7rem); margin: 0; line-height: 0.85; text-transform: uppercase; }
+        header { min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 20px 40px 20px; }
+        .hero-text { font-family: 'Space Grotesk', sans-serif; font-size: clamp(3.2rem, 11vw, 6.5rem); margin: 0; line-height: 0.9; text-transform: uppercase; letter-spacing: -2px; }
+        .hero-img { width: clamp(400px, 35vw, 320px); height: auto; margin-top: 40px; filter: drop-shadow(0 0 20px var(--accent)); animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-25px); } }
 
         .marquee-container {
             background: var(--accent); color: #000; padding: 15px 0; overflow: hidden; white-space: nowrap; display: flex; margin-bottom: 40px;
@@ -36,120 +37,91 @@
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
-
-        /* Premium Cards */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .service-card {
             background: linear-gradient(145deg, #1a1a1a, #111);
-            padding: 45px 35px;
-            border-radius: 40px;
-            border: 1px solid #222;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            padding: 40px 30px; border-radius: 35px; border: 1px solid #222; position: relative; overflow: hidden;
+            display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.1);
-        }
-        .service-card h3 { font-family: 'Space Grotesk'; font-size: 2rem; margin: 0 0 10px 0; color: var(--accent); }
-        .service-card p { color: var(--text-dim); line-height: 1.6; margin-bottom: 30px; }
+        .service-card:hover { transform: translateY(-10px); border-color: var(--accent); }
+        .service-card h3 { font-family: 'Space Grotesk'; font-size: 1.8rem; margin: 0 0 10px 0; color: var(--accent); }
+        .service-card p { color: var(--text-dim); line-height: 1.6; margin-bottom: 30px; font-size: 0.95rem; }
         .price-tag { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); opacity: 0.7; margin-bottom: 10px; display: block; }
         .select-btn {
-            background: #fff; color: #000; border: none; padding: 18px; border-radius: 100px; font-weight: 700; font-family: 'Space Grotesk'; cursor: pointer; width: 100%; letter-spacing: 1px;
+            background: #fff; color: #000; border: none; padding: 16px; border-radius: 100px; font-weight: 700; font-family: 'Space Grotesk'; cursor: pointer; width: 100%; letter-spacing: 1px;
         }
         .service-card:hover .select-btn { background: var(--accent); }
 
-        /* FAQ Styling */
         .faq-section { margin-top: 100px; padding-bottom: 50px; }
         .faq-title { font-family: 'Space Grotesk'; font-size: 2.5rem; color: var(--accent); margin-bottom: 40px; text-align: center; }
         .faq-item { background: var(--card-bg); border: 1px solid #222; border-radius: 20px; margin-bottom: 15px; overflow: hidden; cursor: pointer; }
         .faq-question { padding: 25px; display: flex; justify-content: space-between; align-items: center; font-family: 'Space Grotesk'; font-size: 1.1rem; color: var(--text-main); }
-        .faq-answer { max-height: 0; overflow: hidden; padding: 0 25px; color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; transition: max-height 0.4s ease, padding 0.4s ease; }
-        .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 25px; }
-        .faq-icon { font-size: 1.5rem; color: var(--accent); transition: transform 0.3s ease; }
-        .faq-item.active .faq-icon { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; padding: 0 25px; color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; transition: all 0.4s ease; }
+        .faq-item.active .faq-answer { max-height: 400px; padding-bottom: 25px; }
 
-        /* Modal & Footer */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); display: none; justify-content: center; align-items: center; z-index: 2000; }
-        .modal-content { background: #111; width: 90%; max-width: 450px; padding: 40px; border-radius: 30px; border: 1px solid var(--accent); position: relative; }
-        input, select { width: 100%; background: #000; border: 1px solid #333; color: white; padding: 12px; border-radius: 12px; margin-bottom: 15px; }
-        .confirm-btn { background: var(--accent); color: #000; border: none; padding: 15px; border-radius: 50px; width: 100%; font-weight: bold; cursor: pointer; }
+        .modal-content { background: #111; width: 90%; max-width: 450px; padding: 30px; border-radius: 30px; border: 1px solid var(--accent); position: relative; max-height: 90vh; overflow-y: auto; }
+        input, select { width: 100%; background: #000; border: 1px solid #333; color: white; padding: 12px; border-radius: 12px; margin-bottom: 12px; font-family: 'Inter', sans-serif; font-size: 1rem; }
+        label { display: block; font-size: 0.8rem; color: var(--accent); margin-bottom: 5px; font-weight: bold; }
+        .terms-container { display: flex; align-items: flex-start; gap: 10px; margin: 15px 0; background: #000; padding: 12px; border-radius: 12px; border: 1px solid #222; }
+        .terms-container input { width: 22px; height: 22px; margin: 0; cursor: pointer; accent-color: var(--accent); }
+        .terms-text { font-size: 0.75rem; color: var(--text-dim); line-height: 1.4; }
+        .confirm-btn { background: var(--accent); color: #000; border: none; padding: 18px; border-radius: 50px; width: 100%; font-weight: bold; font-family: 'Space Grotesk'; cursor: pointer; margin-top: 10px; font-size: 1rem; }
         footer { background: #0a0a0a; padding: 60px 20px; border-top: 1px solid #1a1a1a; text-align: center; margin-top: 50px; }
         .footer-btn { background: transparent; color: var(--text-dim); border: 1px solid #333; padding: 10px 25px; border-radius: 50px; text-decoration: none; font-size: 0.8rem; margin: 5px; display: inline-block; }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">MK</div>
-        <div style="font-size: 0.7rem; color: var(--accent); font-weight: bold;">● READY</div>
-    </nav>
+    <nav><div class="logo">MK</div><div style="font-size: 0.7rem; color: var(--accent); font-weight: bold;">● READY</div></nav>
 
     <header id="top">
         <p style="letter-spacing: 5px; color: var(--accent); font-weight: bold;">HUMAN COMPANION</p>
-        <h1>BEING<br>THERE.</h1>
+        <h1 class="hero-text">NEVER<br>ALONE.</h1>
+        <img src="https://i.postimg.cc/gJDXFbSQ/Chat_GPT_Image_Dec_12_2025_10_33_58_PM_removebg_preview.png" alt="Mahender Companion" class="hero-img">
     </header>
 
     <div class="marquee-container">
-        <div class="marquee-text">&nbsp; 1st HR: ₹500 — 2nd HR: +₹600 — 3rd HR: +₹700 — STRICTLY PLATONIC — PUBLIC PLACES ONLY — &nbsp;</div>
+        <div class="marquee-text">&nbsp; FREE (₹0) — 11:00 AM TO 07:00 PM — CLIENT COVERS ALL FOOD & TRAVEL — STRICTLY PLATONIC — PUBLIC PLACES ONLY — &nbsp;</div>
     </div>
 
     <div class="container">
         <div class="grid">
             <div class="service-card">
-                <div>
-                    <span class="price-tag">Starting at ₹500</span>
-                    <h3>Meal Partner</h3>
-                    <p>Neutral company for lunch or dinner.</p>
-                </div>
+                <div><span class="price-tag">₹0 Fee | 2Hr Slot</span><h3>Meal Partner</h3><p>Neutral company for lunch or dinner. You cover the bill & travel.</p></div>
                 <button class="select-btn" onclick="openBooking('Meal Partner')">BOOK NOW</button>
             </div>
-            
             <div class="service-card">
-                <div>
-                    <span class="price-tag">Starting at ₹500</span>
-                    <h3>Cinema Buddy</h3>
-                    <p>Silent companionship for movies.</p>
-                </div>
+                <div><span class="price-tag">₹0 Fee | 2Hr Slot</span><h3>Cinema Buddy</h3><p>Silent companionship for movies. Ticket & travel cost on client.</p></div>
                 <button class="select-btn" onclick="openBooking('Cinema Buddy')">BOOK NOW</button>
             </div>
-
             <div class="service-card">
-                <div>
-                    <span class="price-tag">Starting at ₹500</span>
-                    <h3>Retail Shadow</h3>
-                    <p>Browsing companion. I'll carry your bags.</p>
-                </div>
-                <button class="select-btn" onclick="openBooking('Retail Shadow')">BOOK NOW</button>
+                <div><span class="price-tag">₹0 Fee | 2Hr Slot</span><h3>Walking Partner</h3><p>A companion for walks in malls. You cover travel costs.</p></div>
+                <button class="select-btn" onclick="openBooking('Walking Partner')">BOOK NOW</button>
+            </div>
+            <div class="service-card">
+                <div><span class="price-tag">₹0 Fee | 2Hr Slot</span><h3>Travel Buddy</h3><p>Exploring Delhi's history and landmarks together. All entry & travel costs on client.</p></div>
+                <button class="select-btn" onclick="openBooking('Travel Buddy')">BOOK NOW</button>
             </div>
         </div>
 
         <div class="faq-section">
-            <h2 class="faq-title">QUESTIONS?</h2>
-            
+            <h2 class="faq-title">FAQ</h2>
             <div class="faq-item" onclick="toggleFAQ(this)">
-                <div class="faq-question"><span>Who is MK?</span><span class="faq-icon">+</span></div>
-                <div class="faq-answer">I am a guy, and you can call me <strong>Arihant</strong>. I provide professional companionship for people who want to visit places but don't want to go alone.</div>
+                <div class="faq-question"><span>Who is Mahender?</span></div>
+                <div class="faq-answer">I am a guy based in Delhi who provides safe, platonic companionship for public outings. I help people who don't want to visit malls or cafes alone.</div>
             </div>
-
             <div class="faq-item" onclick="toggleFAQ(this)">
-                <div class="faq-question"><span>Is this a date?</span><span class="faq-icon">+</span></div>
-                <div class="faq-answer">No. This is strictly platonic (non-romantic) companionship. I am there to provide a human presence, not a romantic connection.</div>
+                <div class="faq-question"><span>Is it really free?</span></div>
+                <div class="faq-answer">Yes, there is <b>zero fee</b> for my time. However, the client must cover all direct expenses: my food/drinks, any entry tickets, and my travel (Uber/Auto/Metro).</div>
             </div>
-
             <div class="faq-item" onclick="toggleFAQ(this)">
-                <div class="faq-question"><span>Why the advance payment?</span><span class="faq-icon">+</span></div>
-                <div class="faq-answer">The ₹500 advance ensures that the booking is serious and my time is reserved specifically for you. It prevents "no-shows."</div>
+                <div class="faq-question"><span>Where can we meet?</span></div>
+                <div class="faq-answer">Meetups only in public places(malls)<strong>Dwarka Mor / Uttam Nagar</strong> and iconic historical monuments in Delhi.</div>
             </div>
-
             <div class="faq-item" onclick="toggleFAQ(this)">
-                <div class="faq-question"><span>What will we talk about?</span><span class="faq-icon">+</span></div>
-                <div class="faq-answer">Whatever you like—or nothing at all. I can be a great listener, a conversationalist, or just a silent presence.</div>
+                <div class="faq-question"><span>What are the timings?</span></div>
+                <div class="faq-answer">I am available daily from <b>11:00 AM to 07:00 PM</b>. All sessions are fixed for 2-hour durations.</div>
             </div>
         </div>
     </div>
@@ -157,66 +129,91 @@
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-content">
             <h3 id="modalTitle">Book</h3>
-            <label>Duration</label>
-            <select id="bookHours">
-                <option value="1">1 Hour (₹500)</option>
-                <option value="2">2 Hours (₹1,100)</option>
-                <option value="3">3 Hours (₹1,800)</option>
+            <label>Full Name</label><input type="text" id="clientName" placeholder="Enter your name">
+            <label>Mobile Number</label><input type="tel" id="clientPhone" placeholder="Mobile number">
+            <label>Select Location</label>
+            <select id="bookLoc">
+                <option value="">-- Choose a Place --</option>
+                <optgroup label="Malls (Dwarka/Uttam Nagar)">
+                    <option value="Vegas Mall (Sector 14)">Vegas Mall, Dwarka Sec 14</option>
+                    <option value="City Centre Mall (Sector 12)">City Centre, Dwarka Sec 12</option>
+                    <option value="Pacific D21 Mall (Sector 21)">Pacific D21, Dwarka Sec 21</option>
+                    <option value="Reliance Mall (Uttam Nagar)">Reliance Mall, Nagar</option>
+                    <option value="Unity One Mall (Dwarka)">Unity One Mall, Dwarka</option>
+                </optgroup>
+                <optgroup label="Historical Landmarks">
+                    <option value="Red Fort (Lal Qila)">Red Fort – Classic Delhi history</option>
+                    <option value="Qutub Minar">Qutub Minar – Tall, beautiful monument</option>
+                    <option value="Humayun’s Tomb">Humayun’s Tomb – Peaceful & photogenic</option>
+                    <option value="India Gate">India Gate – Best in evening/night</option>
+                </optgroup>
             </select>
-            <input type="date" id="bookDate">
-            <input type="time" id="bookTime">
-            <input type="text" id="bookLoc" placeholder="Location/Mall">
-            <button class="confirm-btn" onclick="submitToWhatsApp()">Send via WhatsApp</button>
+            <label>Date</label><input type="date" id="bookDate">
+            <label>Start Time (11:00 AM to 05:00 PM)</label><input type="time" id="bookTime" min="11:00" max="17:00">
+            <div class="terms-container">
+                <input type="checkbox" id="termsCheck">
+                <div class="terms-text">I agree to cover <b>all travel (Uber/Auto)</b> and <b>food/ticket</b> costs for Mahender. Strictly platonic.</div>
+            </div>
+            <button class="confirm-btn" id="submitBtn" onclick="submitBooking()">Send via WhatsApp</button>
         </div>
     </div>
 
     <footer>
         <a href="#top" class="footer-btn">BACK TO TOP</a>
         <a href="privacy.html" class="footer-btn">PRIVACY & TERMS</a>
-        <p>© 2024 MK • BY ARIHANT</p>
+        <p>© 2025 MK • BY MAHENDER</p>
     </footer>
 
     <script>
-        function toggleFAQ(element) { element.classList.toggle('active'); }
+        function toggleFAQ(e){e.classList.toggle("active")}
+        let selectedService="";
+        function openBooking(e){selectedService=e,document.getElementById("modalTitle").innerText="Booking: "+e,document.getElementById("modalOverlay").style.display="flex"}
+        function closeBooking(){document.getElementById("modalOverlay").style.display="none"}
 
-        let selectedService = "";
-        function openBooking(service) {
-            selectedService = service;
-            document.getElementById('modalTitle').innerText = "Booking: " + service;
-            document.getElementById('modalOverlay').style.display = 'flex';
+        async function submitBooking(){
+            const n=document.getElementById("clientName").value,
+                  p=document.getElementById("clientPhone").value,
+                  d=document.getElementById("bookDate").value,
+                  t24=document.getElementById("bookTime").value,
+                  l=document.getElementById("bookLoc").value,
+                  c=document.getElementById("termsCheck").checked;
+
+            if(!n||!p||!d||!t24||!l)return alert("Please fill in all details.");
+            if(!c)return alert("Please check the agreement box.");
+
+            const [h24, m] = t24.split(":").map(Number);
+            const period = h24 >= 12 ? "PM" : "AM";
+            const h12 = h24 % 12 || 12;
+            const t12 = `${h12}:${m < 10 ? '0'+m : m} ${period}`;
+
+            if(h24 < 11 || h24 > 17) return alert("Please select a time between 11:00 AM and 05:00 PM.");
+
+            const btn = document.getElementById("submitBtn");
+            btn.innerText = "Processing...";
+            btn.disabled = true;
+
+            try {
+                await fetch("https://formspree.io/f/mqaejodj", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name: n, phone: p, service: selectedService, date: d, time: t12, location: l })
+                });
+            } catch (err) { console.error("Formspree error:", err); }
+
+            // Bot Protection: Obfuscated phone number logic
+            const a = "9650";
+            const b = "1482";
+            const c_part = "90";
+            const target = "91" + a + b + c_part;
+
+            const msg=`*FREE COMPANIONSHIP BOOKING*%0A%0A*Name:* ${n}%0A*Phone:* ${p}%0A*Service:* ${selectedService}%0A*Date:* ${d}%0A*Start Time:* ${t12}%0A*Location:* ${l}%0A%0A*CONFIRMED:* I will cover all travel (Uber/Auto) and food/ticket costs for Mahender. Strictly platonic.`;
+            window.open(`https://wa.me/${target}?text=${msg}`,"_blank");
+
+            btn.innerText = "Send via WhatsApp";
+            btn.disabled = false;
         }
-        function closeBooking() { document.getElementById('modalOverlay').style.display = 'none'; }
-        
-        function submitToWhatsApp() {
-            const hours = document.getElementById('bookHours').value;
-            const date = document.getElementById('bookDate').value;
-            const time = document.getElementById('bookTime').value;
-            const loc = document.getElementById('bookLoc').value;
-            
-            if(!date || !time || !loc) { alert("Please fill in all details."); return; }
 
-            let [hh, mm] = time.split(':');
-            let ampm = hh >= 12 ? 'PM' : 'AM';
-            hh = hh % 12 || 12;
-            const time12 = `${hh}:${mm} ${ampm}`;
-
-            const total = (hours == 1) ? 500 : (hours == 2) ? 1100 : 1800;
-            
-            // This pulls your generated wa.link but adds the specific booking details as a pre-filled text
-            const message = `*PAY 500RS ADVANCE TO CONFIRM BOOKING*%0A%0A` +
-                            `*Booking:* ${selectedService}%0A` +
-                            `*Duration:* ${hours} Hr(s)%0A` +
-                            `*Total:* ₹${total}%0A` +
-                            `*Date:* ${date}%0A` +
-                            `*Time:* ${time12}%0A` +
-                            `*Location:* ${loc}%0A%0A` +
-                            `I understand all additional expenses are covered by me.`;
-            
-            // Using your provided wa.link with the dynamic message
-            window.open(`https://wa.me/919650148290?text=${message}`, '_blank');
-        }
-
-        window.onclick = function(e) { if(e.target == document.getElementById('modalOverlay')) closeBooking(); }
+        window.onclick=function(e){e.target==document.getElementById("modalOverlay")&&closeBooking()};
     </script>
 </body>
 </html>
