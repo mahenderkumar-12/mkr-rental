@@ -39,9 +39,10 @@
 
         h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 3rem;
+            font-size: clamp(2rem, 8vw, 3rem);
             margin-bottom: 10px;
             color: var(--text-main);
+            line-height: 1.1;
         }
 
         .last-updated {
@@ -49,6 +50,7 @@
             font-size: 0.8rem;
             margin-bottom: 50px;
             display: block;
+            letter-spacing: 1px;
         }
 
         section {
@@ -77,8 +79,9 @@
 
         .highlight-box {
             border-left: 4px solid var(--accent);
-            padding-left: 20px;
+            padding: 15px 20px;
             margin: 20px 0;
+            background: rgba(0, 255, 136, 0.03);
             font-style: italic;
         }
 
@@ -96,45 +99,45 @@
         <a href="index.html" class="back-link">← BACK TO HOME</a>
         
         <h1>THE PROTOCOL.</h1>
-        <span class="last-updated">LAST UPDATED: DECEMBER 2025</span>
+        <span class="last-updated">VERSION 2.1 | UPDATED DECEMBER 2025</span>
 
         <section>
-            <h2>01. PRIVACY POLICY</h2>
-            <p>Your identity is your business. MK operates on a "Zero-Data" philosophy.</p>
+            <h2>01. DATA & LOGS</h2>
+            <p>Transparency on how your information is handled:</p>
             <ul>
-                <li><strong>Data Collection:</strong> We do not store your phone number or real name after a session is completed.</li>
-                <li><strong>No Content Policy:</strong> MK will never record audio, take photos, or post about a client on social media without explicit written consent.</li>
-                <li><strong>Confidentiality:</strong> Any conversations held during "Doing Nothing" sessions are strictly confidential and will never be shared with third parties.</li>
+                <li><strong>Booking Logs:</strong> When you click book, your details (Name, Phone, Location, Time) are sent via <strong>Formspree</strong> to our internal log for scheduling purposes.</li>
+                <li><strong>WhatsApp:</strong> A secondary message is generated for direct communication. We do not sell or trade your contact information.</li>
+                <li><strong>Zero Retention:</strong> Personal logs are cleared periodically after the scheduled session date has passed.</li>
             </ul>
         </section>
 
         <section>
-            <h2>02. TERMS OF SERVICE</h2>
-            <p>By booking MK, you agree to the following social contract:</p>
+            <h2>02. RULES OF ENGAGEMENT</h2>
+            <p>By using this service, you agree to these non-negotiable terms:</p>
             <div class="highlight-box">
-                "MK is a professional companion, not a laborer, friend-for-hire, or romantic interest."
+                "Mahender is a platonic companion. Any attempt to change the nature of this service will result in an immediate block and cancellation."
             </div>
             <ul>
-                <li><strong>Platonic Boundary:</strong> Zero physical contact. Any violation results in immediate termination of the session with no refund.</li>
-                <li><strong>Safety:</strong> Meetups are restricted to public venues (malls, cafes, parks, theaters). Private residences or secluded areas are strictly prohibited.</li>
-                <li><strong>Illegal Acts:</strong> MK will not participate in, or be a witness to, any illegal activities.</li>
+                <li><strong>Location:</strong> Public meetups ONLY. Strictly limited to malls near <b>Dwarka Mor</b> and <b>Uttam Nagar</b> (e.g., Vegas, City Centre, Pacific D21).</li>
+                <li><strong>Hours:</strong> Availability is strictly 11:00 to 19:00 (24h format).</li>
+                <li><strong>Behavior:</strong> Respectful conduct is required. Mahender reserves the right to leave any session if he feels unsafe or uncomfortable.</li>
             </ul>
         </section>
 
         <section>
-            <h2>03. FINANCIALS</h2>
+            <h2>03. FINANCIAL RESPONSIBILITY</h2>
+            <p>The "Free" model (₹0 fee) relies on the following:</p>
             <ul>
-                <li><strong>Booking Fee:</strong> Must be paid via UPI to secure the slot. This covers the "presence" fee.</li>
-                <li><strong>Expenses:</strong> All travel (Uber/Auto/Metro), food, and entry tickets for MK must be covered by the client at the time of the session.</li>
-                <li><strong>Cancellations:</strong> Cancellations made less than 24 hours before the slot are non-refundable.</li>
+                <li><strong>Travel:</strong> Client covers 100% of Mahender's travel costs (Uber/Auto/Metro) to and from the venue.</li>
+                <li><strong>Activities:</strong> Client covers the full bill for meals, coffee, or cinema tickets during the session.</li>
+                <li><strong>No Hidden Fees:</strong> Mahender will never ask for "service charges" or "tips." If someone asks for money in his name, it is a scam.</li>
             </ul>
         </section>
 
         <footer>
-            © MK | DOING NOTHING PROFESSIONALLY
+            © 2025 MK | BY MAHENDER
         </footer>
     </div>
 
 </body>
-
 </html>
